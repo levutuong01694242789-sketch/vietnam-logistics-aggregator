@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +14,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -26,56 +27,62 @@
   </script>
   <style>
     ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #0f172a; }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col transition-colors duration-200">
 
   <!-- TOP HEADER -->
-  <header class="sticky top-0 z-40 bg-slate-900/95 border-b border-slate-800 backdrop-blur-md">
+  <header class="sticky top-0 z-40 bg-white/95 border-b border-slate-200 backdrop-blur-md shadow-sm">
     <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
       
       <!-- Logo -->
       <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('carriers')">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 p-0.5 shadow-lg shadow-rose-950/50">
-          <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center font-black text-2xl text-rose-500">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 p-0.5 shadow-md shadow-rose-200">
+          <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center font-black text-2xl text-rose-600">
             ❄️
           </div>
         </div>
         <div>
           <div class="flex items-center space-x-2">
-            <span class="font-display font-extrabold text-2xl text-white">VietLogis <span class="text-rose-500">Food</span></span>
-            <span class="px-2.5 py-0.5 text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 rounded-full">LC FOODS Hub</span>
+            <span class="font-display font-extrabold text-2xl text-slate-900">VietLogis <span class="text-rose-600">Food</span></span>
+            <span class="px-2.5 py-0.5 text-[10px] font-bold bg-rose-100 text-rose-700 border border-rose-200 rounded-full">LC FOODS Hub</span>
           </div>
-          <p class="text-xs text-slate-400 font-medium">Sàn So Sánh & Vận Tải Thực Phẩm Khô & Đông Lạnh</p>
+          <p class="text-xs text-slate-500 font-medium">Sàn So Sánh & Vận Tải Thực Phẩm Khô & Đông Lạnh</p>
         </div>
       </div>
 
       <!-- Navigation Tabs -->
-      <nav class="hidden md:flex items-center space-x-1 bg-slate-950/90 p-1.5 rounded-2xl border border-slate-800 text-xs font-bold">
-        <button id="tab-btn-carriers" onclick="switchTab('carriers')" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-md transition">
+      <nav class="hidden md:flex items-center space-x-1 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 text-xs font-bold">
+        <button id="tab-btn-carriers" onclick="switchTab('carriers')" class="px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-md transition">
           🚛 So Sánh (<span id="total-carriers-count">12</span> Nhà Xe)
         </button>
-        <button id="tab-btn-calculator" onclick="switchTab('calculator')" class="px-4 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition">
+        <button id="tab-btn-calculator" onclick="switchTab('calculator')" class="px-4 py-2.5 rounded-xl text-slate-600 hover:text-rose-600 hover:bg-white transition">
           🧮 Tính Cước Vận Chuyển
         </button>
-        <button id="tab-btn-dcs" onclick="switchTab('dcs')" class="px-4 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition">
+        <button id="tab-btn-dcs" onclick="switchTab('dcs')" class="px-4 py-2.5 rounded-xl text-slate-600 hover:text-rose-600 hover:bg-white transition">
           🏢 Quy Chuẩn Kho DC Siêu Thị
         </button>
-        <button id="tab-btn-iot" onclick="switchTab('iot')" class="px-4 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition">
+        <button id="tab-btn-iot" onclick="switchTab('iot')" class="px-4 py-2.5 rounded-xl text-slate-600 hover:text-rose-600 hover:bg-white transition">
           📡 Giám Sát Nhiệt IoT
         </button>
       </nav>
 
-      <!-- Action & Counter -->
+      <!-- Action & Counter & Theme Switcher -->
       <div class="flex items-center space-x-3">
-        <button id="btn-open-add-carrier" onclick="openAddCarrierModal()" class="flex items-center space-x-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs px-3.5 py-2 rounded-xl border border-slate-700 transition">
+        <!-- Theme Toggle -->
+        <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200 font-bold text-xs flex items-center space-x-1.5 transition">
+          <span id="theme-icon">☀️</span>
+          <span id="theme-label" class="hidden sm:inline">Nền Sáng</span>
+        </button>
+
+        <button id="btn-open-add-carrier" onclick="openAddCarrierModal()" class="flex items-center space-x-1.5 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs px-3.5 py-2.5 rounded-xl border border-rose-200 transition">
           <span>+ Thêm Nhà Xe Mới</span>
         </button>
 
-        <button id="btn-open-comparison" onclick="openComparisonModal()" class="hidden items-center space-x-2 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg transition transform hover:scale-105">
+        <button id="btn-open-comparison" onclick="openComparisonModal()" class="hidden items-center space-x-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition transform hover:scale-105">
           <span>So Sánh (<span id="compare-count">0</span>)</span>
         </button>
       </div>
@@ -85,25 +92,25 @@
 
   <!-- HERO BANNER -->
   <section class="max-w-7xl mx-auto px-4 mt-6 w-full">
-    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-rose-950/40 to-slate-900 border border-slate-800 p-8 sm:p-10 shadow-2xl">
+    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-rose-50 via-amber-50/50 to-sky-50 border border-rose-100 p-8 sm:p-10 shadow-sm">
       <div class="relative z-10 max-w-3xl space-y-3">
-        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-bold">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-rose-200 text-rose-700 text-xs font-bold shadow-sm">
           <span>❄️ Nền Tảng Tìm Kiếm Vận Tải Chuyên Biệt Cho LC FOODS (La Cusina)</span>
         </div>
 
-        <h1 class="text-2xl sm:text-4xl font-display font-extrabold text-white leading-tight">
-          Sàn So Sánh <span class="text-rose-500">12+ Nhà Vận Chuyển Thực Phẩm</span> Toàn Quốc
+        <h1 class="text-2xl sm:text-4xl font-display font-extrabold text-slate-900 leading-tight">
+          Sàn So Sánh <span class="text-rose-600">12+ Nhà Vận Chuyển Thực Phẩm</span> Toàn Quốc
         </h1>
 
-        <p class="text-xs text-slate-300 leading-relaxed">
+        <p class="text-xs text-slate-600 leading-relaxed font-medium">
           Tối ưu hóa cước phí & chất lượng chuỗi lạnh -18°C ~ -25°C cho <strong>Há Cảo, Sủi Cảo, Xúc Xích Đông Lạnh</strong> và hàng mát/tiệt trùng. Đáp ứng khung giờ giao kho DC Siêu thị (MT) & mạng lưới phân phối đại lý (GT) 63 tỉnh thành.
         </p>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3 border-t border-slate-800/80 text-xs">
-          <div><span class="text-slate-400 text-[10px] block font-bold">NHÀ XE TÍCH HỢP:</span><strong class="text-white text-sm" id="badge-carrier-num">12 Đơn vị uy tín</strong></div>
-          <div><span class="text-slate-400 text-[10px] block font-bold">DUYỆT KHO MT:</span><strong class="text-emerald-400 text-sm">98.5% OTIF</strong></div>
-          <div><span class="text-slate-400 text-[10px] block font-bold">CHUẨN NHIỆT ĐỘ:</span><strong class="text-sky-400 text-sm">-25°C đến +25°C</strong></div>
-          <div><span class="text-slate-400 text-[10px] block font-bold">ĐỘ PHỦ TUYẾN:</span><strong class="text-amber-300 text-sm">63 Tỉnh Thành</strong></div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3 border-t border-rose-200/60 text-xs">
+          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">NHÀ XE TÍCH HỢP:</span><strong class="text-slate-900 text-sm" id="badge-carrier-num">12 Đơn vị uy tín</strong></div>
+          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">DUYỆT KHO MT:</span><strong class="text-emerald-600 text-sm">98.5% OTIF</strong></div>
+          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">CHUẨN NHIỆT ĐỘ:</span><strong class="text-sky-600 text-sm">-25°C đến +25°C</strong></div>
+          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">ĐỘ PHỦ TUYẾN:</span><strong class="text-amber-600 text-sm">63 Tỉnh Thành</strong></div>
         </div>
       </div>
     </div>
@@ -116,24 +123,24 @@
     <div id="view-carriers" class="space-y-6">
       
       <!-- Smart Filter Box -->
-      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
-            <h2 class="text-lg font-display font-bold text-white">Bộ Lọc Thông Minh Theo Tuyến & Sản Phẩm LC FOODS</h2>
-            <p class="text-xs text-slate-400">Chọn vùng miền hoặc dòng sản phẩm để lọc nhà xe phù hợp nhất.</p>
+            <h2 class="text-lg font-display font-bold text-slate-900">Bộ Lọc Thông Minh Theo Tuyến & Sản Phẩm LC FOODS</h2>
+            <p class="text-xs text-slate-500">Chọn vùng miền hoặc dòng sản phẩm để lọc nhà xe phù hợp nhất.</p>
           </div>
           <input
             type="text"
             id="filter-search"
             oninput="renderCarriers()"
             placeholder="Tìm theo tên nhà xe, tỉnh thành..."
-            class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 w-full sm:w-72 focus:outline-none focus:border-rose-500"
+            class="bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 placeholder-slate-400 w-full sm:w-72 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500 font-medium"
           />
         </div>
 
         <!-- Filter Row 1: Product Groups -->
         <div>
-          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
             1. Sản Phẩm LC FOODS:
           </label>
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5" id="product-group-filters">
@@ -143,24 +150,24 @@
 
         <!-- Filter Row 2: Region Selection -->
         <div>
-          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
             2. Vùng Miền / Tuyến Vận Chuyển:
           </label>
           <div class="flex flex-wrap gap-2" id="region-filters">
-            <button onclick="setRegionFilter('all')" id="reg-all" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-rose-600 text-white">Tất cả khu vực</button>
-            <button onclick="setRegionFilter('Bắc')" id="reg-Bac" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">Miền Bắc / Hà Nội</button>
-            <button onclick="setRegionFilter('Nam')" id="reg-Nam" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">Miền Nam / TP.HCM</button>
-            <button onclick="setRegionFilter('Tây')" id="reg-Tay" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">Miền Tây / ĐBSCL</button>
-            <button onclick="setRegionFilter('Bắc - Nam')" id="reg-Bắc - Nam" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white">Trục Bắc - Nam</button>
+            <button onclick="setRegionFilter('all')" id="reg-all" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-rose-600 text-white shadow-sm">Tất cả khu vực</button>
+            <button onclick="setRegionFilter('Bắc')" id="reg-Bac" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200">Miền Bắc / Hà Nội</button>
+            <button onclick="setRegionFilter('Nam')" id="reg-Nam" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200">Miền Nam / TP.HCM</button>
+            <button onclick="setRegionFilter('Tây')" id="reg-Tay" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200">Miền Tây / ĐBSCL</button>
+            <button onclick="setRegionFilter('Bắc - Nam')" id="reg-Bắc - Nam" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200">Trục Bắc - Nam</button>
           </div>
         </div>
       </div>
 
       <!-- Carrier Cards Grid Header -->
       <div class="flex items-center justify-between">
-        <h3 class="text-base font-bold text-white flex items-center space-x-2">
+        <h3 class="text-base font-bold text-slate-900 flex items-center space-x-2">
           <span>Danh Sách Đơn Vị Vận Chuyển Khô & Đông Lạnh</span>
-          <span class="px-2.5 py-0.5 text-xs font-bold bg-slate-800 text-rose-400 rounded-full border border-slate-700" id="carrier-count-badge">
+          <span class="px-2.5 py-0.5 text-xs font-bold bg-rose-100 text-rose-700 rounded-full border border-rose-200" id="carrier-count-badge">
             12 nhà xe
           </span>
         </h3>
@@ -175,35 +182,35 @@
 
     <!-- SECTION 2: SHIPPING COST CALCULATOR -->
     <div id="view-calculator" class="hidden">
-      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
-        <div class="border-b border-slate-800 pb-4">
-          <h2 class="text-xl font-display font-bold text-white">🧮 Công Cụ Tính Cước Vận Chuyển LC FOODS</h2>
-          <p class="text-xs text-slate-400">Ước tính chi tiết cước xe lạnh/xe khô theo khoảng cách, trọng tải và phụ phí giao siêu thị.</p>
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-xl font-display font-bold text-slate-900">🧮 Công Cụ Tính Cước Vận Chuyển LC FOODS</h2>
+          <p class="text-xs text-slate-500">Ước tính chi tiết cước xe lạnh/xe khô theo khoảng cách, trọng tải và phụ phí giao siêu thị.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <!-- Config Column -->
           <div class="lg:col-span-7 space-y-5 text-xs">
             <div>
-              <label class="block font-bold text-slate-300 mb-1.5">Quãng Đường Vận Chuyển (km):</label>
-              <input type="number" id="calc-dist" value="35" oninput="updateCalculation()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold text-sm" />
+              <label class="block font-bold text-slate-700 mb-1.5">Quãng Đường Vận Chuyển (km):</label>
+              <input type="number" id="calc-dist" value="35" oninput="updateCalculation()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-sm focus:ring-2 focus:ring-rose-500" />
             </div>
 
             <div>
-              <label class="block font-bold text-slate-300 mb-1.5">Hình Thức Vận Chuyển:</label>
+              <label class="block font-bold text-slate-700 mb-1.5">Hình Thức Vận Chuyển:</label>
               <div class="grid grid-cols-2 gap-3">
-                <button id="btn-mode-ftl" onclick="setCalcMode('FTL')" class="p-3 rounded-2xl border font-bold bg-rose-500/20 border-rose-500 text-rose-300">
+                <button id="btn-mode-ftl" onclick="setCalcMode('FTL')" class="p-3 rounded-2xl border font-bold bg-rose-50 border-rose-300 text-rose-700">
                   Nguyên Xe (FTL)
                 </button>
-                <button id="btn-mode-ltl" onclick="setCalcMode('LTL')" class="p-3 rounded-2xl border font-bold bg-slate-950 border-slate-800 text-slate-400">
+                <button id="btn-mode-ltl" onclick="setCalcMode('LTL')" class="p-3 rounded-2xl border font-bold bg-slate-50 border-slate-200 text-slate-600">
                   Gửi Ghép (LTL)
                 </button>
               </div>
             </div>
 
             <div id="box-truck-select">
-              <label class="block font-bold text-slate-300 mb-1.5">Trọng Tải Xe Lạnh:</label>
-              <select id="calc-truck" onchange="updateCalculation()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold text-sm">
+              <label class="block font-bold text-slate-700 mb-1.5">Trọng Tải Xe Lạnh:</label>
+              <select id="calc-truck" onchange="updateCalculation()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-sm">
                 <option value="1.5T">Xe Lạnh 1.5 Tấn (Nội thành / Ngắn)</option>
                 <option value="3.5T" selected>Xe Lạnh 3.5 Tấn (Chốt giao siêu thị)</option>
                 <option value="5.0T">Xe Lạnh 5.0 Tấn</option>
@@ -213,26 +220,26 @@
             </div>
 
             <div id="box-weight-input" class="hidden">
-              <label class="block font-bold text-slate-300 mb-1.5">Tổng Khối Lượng Hàng Lô Ghép (Kg):</label>
-              <input type="number" id="calc-weight" value="2500" oninput="updateCalculation()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold text-sm" />
+              <label class="block font-bold text-slate-700 mb-1.5">Tổng Khối Lượng Hàng Lô Ghép (Kg):</label>
+              <input type="number" id="calc-weight" value="2500" oninput="updateCalculation()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 font-bold text-sm" />
             </div>
 
             <div class="space-y-2 pt-2">
-              <label class="flex items-center space-x-2 bg-slate-950 p-3 rounded-xl border border-slate-800 cursor-pointer">
-                <input type="checkbox" id="calc-slot-fee" checked onchange="updateCalculation()" class="accent-rose-500 rounded" />
-                <span>Bao gồm phụ phí Time-slot & lưu chờ kho DC siêu thị (250,000 VND)</span>
+              <label class="flex items-center space-x-2 bg-slate-50 p-3 rounded-xl border border-slate-200 cursor-pointer">
+                <input type="checkbox" id="calc-slot-fee" checked onchange="updateCalculation()" class="accent-rose-600 rounded" />
+                <span class="text-slate-700 font-medium">Bao gồm phụ phí Time-slot & lưu chờ kho DC siêu thị (250,000 VND)</span>
               </label>
             </div>
           </div>
 
           <!-- Result Column -->
-          <div class="lg:col-span-5 p-6 rounded-3xl bg-slate-950 border border-slate-800 flex flex-col justify-between space-y-4 text-xs">
+          <div class="lg:col-span-5 p-6 rounded-3xl bg-slate-900 text-white flex flex-col justify-between space-y-4 text-xs shadow-xl">
             <div>
               <h3 class="font-bold text-white text-base border-b border-slate-800 pb-3">Chi Tiết Bảng Cước Ước Tính</h3>
               <div class="py-4 space-y-3">
-                <div class="flex justify-between text-slate-400"><span>Cước cơ bản:</span><span class="font-bold text-white" id="out-base">1,400,000 VND</span></div>
-                <div class="flex justify-between text-slate-400"><span>Phụ phí đông lạnh (-18°C):</span><span class="font-bold text-sky-400" id="out-cold">+210,000 VND</span></div>
-                <div class="flex justify-between text-slate-400"><span>Phí Time-slot & Hạ bốc xếp:</span><span class="font-bold text-amber-400" id="out-slot">+250,000 VND</span></div>
+                <div class="flex justify-between text-slate-300"><span>Cước cơ bản:</span><span className="font-bold text-white" id="out-base">1,400,000 VND</span></div>
+                <div class="flex justify-between text-slate-300"><span>Phụ phí đông lạnh (-18°C):</span><span class="font-bold text-sky-400" id="out-cold">+210,000 VND</span></div>
+                <div class="flex justify-between text-slate-300"><span>Phí Time-slot & Hạ bốc xếp:</span><span class="font-bold text-amber-400" id="out-slot">+250,000 VND</span></div>
                 <div class="pt-4 border-t border-slate-800 flex justify-between items-end">
                   <span class="font-bold text-slate-400">Tổng Cước Ước Tính:</span>
                   <span class="text-2xl font-black text-rose-500" id="out-total">1,860,000 VND</span>
@@ -250,10 +257,10 @@
 
     <!-- SECTION 3: SUPERMARKET DC SPECS -->
     <div id="view-dcs" class="hidden">
-      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 text-xs">
-        <div class="border-b border-slate-800 pb-4">
-          <h2 class="text-xl font-display font-bold text-white">🏢 Quy Chuẩn Giao Kho DC Siêu Thị Cho LC FOODS</h2>
-          <p class="text-xs text-slate-400">Quy định dải nhiệt độ, chiều cao Pallet và màng quấn PE tại các Tổng kho Siêu thị.</p>
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-xs">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-xl font-display font-bold text-slate-900">🏢 Quy Chuẩn Giao Kho DC Siêu Thị Cho LC FOODS</h2>
+          <p class="text-xs text-slate-500">Quy định dải nhiệt độ, chiều cao Pallet và màng quấn PE tại các Tổng kho Siêu thị.</p>
         </div>
 
         <div class="space-y-4" id="dc-specs-container">
@@ -264,39 +271,39 @@
 
     <!-- SECTION 4: IOT MONITORING -->
     <div id="view-iot" class="hidden">
-      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
           <div>
-            <h2 class="text-xl font-display font-bold text-white flex items-center space-x-2">
+            <h2 class="text-xl font-display font-bold text-slate-900 flex items-center space-x-2">
               <span>📡 Giám Sát Nhiệt Độ IoT Real-Time</span>
-              <span class="px-2.5 py-0.5 text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full animate-pulse">ThermoKing Live</span>
+              <span class="px-2.5 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 border border-emerald-200 rounded-full animate-pulse">ThermoKing Live</span>
             </h2>
-            <p class="text-xs text-slate-400 mt-1">Theo dõi liên tục 5 phút/lần đảm bảo sủi cảo & há cảo LC Foods giữ chuẩn -20°C.</p>
+            <p class="text-xs text-slate-500 mt-1">Theo dõi liên tục 5 phút/lần đảm bảo sủi cảo & há cảo LC Foods giữ chuẩn -20°C.</p>
           </div>
-          <button onclick="toggleIotBreach()" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/40">
+          <button onclick="toggleIotBreach()" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-amber-700 border border-amber-300">
             ⚡ Mô phỏng sự cố tăng nhiệt
           </button>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <!-- Temp Display -->
-          <div id="iot-gauge-box" class="lg:col-span-5 p-6 rounded-3xl bg-slate-950 border border-sky-500/40 text-center space-y-4">
+          <div id="iot-gauge-box" class="lg:col-span-5 p-6 rounded-3xl bg-slate-900 text-white border border-sky-500/40 text-center space-y-4 shadow-md">
             <span class="text-xs font-bold text-slate-400 uppercase">Cảm Biến Thùng Xe #1:</span>
             <div class="text-6xl font-black text-sky-400 tracking-tight" id="iot-temp-val">-20.4°C</div>
-            <p class="text-xs text-slate-400" id="iot-temp-status">Nhiệt độ mục tiêu: -20.0°C (Giữ đông âm chuẩn mực)</p>
-            <div class="p-3 rounded-2xl bg-slate-900 text-xs text-emerald-400 font-bold border border-slate-800">
+            <p class="text-xs text-slate-300" id="iot-temp-status">Nhiệt độ mục tiêu: -20.0°C (Giữ đông âm chuẩn mực)</p>
+            <div class="p-3 rounded-2xl bg-slate-950 text-xs text-emerald-400 font-bold border border-slate-800">
               ✓ Chuỗi cung ứng lạnh an toàn 100%
             </div>
           </div>
 
           <!-- Route Info -->
-          <div class="lg:col-span-7 p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-3 text-xs">
-            <h3 class="font-bold text-white text-base">Thông Tin Chuyến Hàng Lạnh LC Foods</h3>
-            <div class="grid grid-cols-2 gap-4 text-slate-300">
-              <div><span class="text-slate-500 block text-[10px] uppercase font-bold">Mã chuyến:</span><strong>LC-SHIP-88902</strong></div>
-              <div><span class="text-slate-500 block text-[10px] uppercase font-bold">Nhà xe:</span><strong>ABA Cooltrans (51H-982.34)</strong></div>
-              <div><span class="text-slate-500 block text-[10px] uppercase font-bold">Tài xế:</span><strong>Nguyễn Văn Hùng (0903-888-xxx)</strong></div>
-              <div><span class="text-slate-500 block text-[10px] uppercase font-bold">Tuyến:</span><strong class="text-rose-400">NM LC Foods → DC WinMart BD</strong></div>
+          <div class="lg:col-span-7 p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-3 text-xs text-slate-700">
+            <h3 class="font-bold text-slate-900 text-base">Thông Tin Chuyến Hàng Lạnh LC Foods</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div><span class="text-slate-500 block text-[10px] uppercase font-bold">Mã chuyến:</span><strong class="text-slate-900">LC-SHIP-88902</strong></div>
+              <div><span class="text-slate-500 block text-[10px] uppercase font-bold">Nhà xe:</span><strong class="text-slate-900">ABA Cooltrans (51H-982.34)</strong></div>
+              <div><span class="text-slate-500 block text-[10px] uppercase font-bold">Tài xế:</span><strong class="text-slate-900">Nguyễn Văn Hùng (0903-888-xxx)</strong></div>
+              <div><span class="text-slate-500 block text-[10px] uppercase font-bold">Tuyến:</span><strong class="text-rose-600">NM LC Foods → DC WinMart BD</strong></div>
             </div>
           </div>
         </div>
@@ -306,16 +313,16 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500 mt-auto">
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
     VietLogis Food © 2026 — Sàn Vận Tải Thực Phẩm LC FOODS (La Cusina)
   </footer>
 
   <!-- COMPARISON MODAL -->
-  <div id="modal-comparison" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 z-50">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-4xl w-full space-y-4 text-xs">
-      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-        <h3 class="text-base font-bold text-white">Bảng So Sánh Sóng Đôi</h3>
-        <button onclick="closeComparisonModal()" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+  <div id="modal-comparison" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 z-50">
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 max-w-4xl w-full space-y-4 text-xs shadow-2xl">
+      <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+        <h3 class="text-base font-bold text-slate-900">Bảng So Sánh Sóng Đôi</h3>
+        <button onclick="closeComparisonModal()" class="text-slate-400 hover:text-slate-900 text-lg font-bold">✕</button>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="comparison-modal-body">
         <!-- Rendered via JS -->
@@ -324,21 +331,21 @@
   </div>
 
   <!-- ADD CARRIER MODAL -->
-  <div id="modal-add-carrier" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 z-50">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-lg w-full space-y-4 text-xs">
-      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-        <h3 class="text-base font-bold text-white">+ Thêm Đối Tác Vận Chuyển Mới Cho LC FOODS</h3>
-        <button onclick="closeAddCarrierModal()" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+  <div id="modal-add-carrier" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 z-50">
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 max-w-lg w-full space-y-4 text-xs shadow-2xl">
+      <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+        <h3 class="text-base font-bold text-slate-900">+ Thêm Đối Tác Vận Chuyển Mới Cho LC FOODS</h3>
+        <button onclick="closeAddCarrierModal()" class="text-slate-400 hover:text-slate-900 text-lg font-bold">✕</button>
       </div>
       <form onsubmit="handleAddCarrierSubmit(event)" class="space-y-3">
         <div>
-          <label class="block font-bold text-slate-300 mb-1">Tên Nhà Xe / Công Ty Vận Tải:</label>
-          <input type="text" id="new-carrier-name" placeholder="Ví dụ: Vận Tải Đông Lạnh Nam Sài Gòn" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" required />
+          <label class="block font-bold text-slate-700 mb-1">Tên Nhà Xe / Công Ty Vận Tải:</label>
+          <input type="text" id="new-carrier-name" placeholder="Ví dụ: Vận Tải Đông Lạnh Nam Sài Gòn" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" required />
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-bold text-slate-300 mb-1">Khu Vực Phủ Sóng:</label>
-            <select id="new-carrier-region" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white">
+            <label class="block font-bold text-slate-700 mb-1">Khu Vực Phủ Sóng:</label>
+            <select id="new-carrier-region" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900">
               <option value="Nam">Miền Nam / TP.HCM</option>
               <option value="Bắc">Miền Bắc / Hà Nội</option>
               <option value="Tây">Miền Tây / ĐBSCL</option>
@@ -346,23 +353,23 @@
             </select>
           </div>
           <div>
-            <label class="block font-bold text-slate-300 mb-1">Điểm OTIF Kho DC (%):</label>
-            <input type="number" id="new-carrier-otif" value="97.5" step="0.1" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" required />
+            <label class="block font-bold text-slate-700 mb-1">Điểm OTIF Kho DC (%):</label>
+            <input type="number" id="new-carrier-otif" value="97.5" step="0.1" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" required />
           </div>
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-bold text-slate-300 mb-1">Cước LTL Đông Lạnh (VND/kg):</label>
-            <input type="number" id="new-carrier-ltl" value="3500" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" required />
+            <label class="block font-bold text-slate-700 mb-1">Cước LTL Đông Lạnh (VND/kg):</label>
+            <input type="number" id="new-carrier-ltl" value="3500" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" required />
           </div>
           <div>
-            <label class="block font-bold text-slate-300 mb-1">Cước FTL Xe 1.5T (VND):</label>
-            <input type="number" id="new-carrier-ftl" value="1300000" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" required />
+            <label class="block font-bold text-slate-700 mb-1">Cước FTL Xe 1.5T (VND):</label>
+            <input type="number" id="new-carrier-ftl" value="1300000" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" required />
           </div>
         </div>
         <div>
-          <label class="block font-bold text-slate-300 mb-1">Số Điện Thoại Hotline:</label>
-          <input type="text" id="new-carrier-hotline" placeholder="0909 xxx xxx" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white" required />
+          <label class="block font-bold text-slate-700 mb-1">Số Điện Thoại Hotline:</label>
+          <input type="text" id="new-carrier-hotline" placeholder="0909 xxx xxx" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900" required />
         </div>
         <button type="submit" class="w-full py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-lg">
           Lưu & Thêm Vào Hệ Thống LC FOODS
@@ -372,24 +379,24 @@
   </div>
 
   <!-- RFQ MODAL -->
-  <div id="modal-rfq" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 z-50">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 max-w-lg w-full space-y-4 text-xs">
-      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-        <h3 class="text-base font-bold text-white" id="rfq-title">Gửi Yêu Cầu Báo Giá (RFQ)</h3>
-        <button onclick="closeRfqModal()" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+  <div id="modal-rfq" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 z-50">
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 max-w-lg w-full space-y-4 text-xs shadow-2xl">
+      <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+        <h3 class="text-base font-bold text-slate-900" id="rfq-title">Gửi Yêu Cầu Báo Giá (RFQ)</h3>
+        <button onclick="closeRfqModal()" class="text-slate-400 hover:text-slate-900 text-lg font-bold">✕</button>
       </div>
       <form onsubmit="handleRfqSubmit(event)" class="space-y-3">
         <div>
-          <label class="block font-bold text-slate-300 mb-1">Công Ty Gửi Hàng:</label>
-          <input type="text" value="Công ty Cổ phần Thực phẩm LC FOODS" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-bold" readonly />
+          <label class="block font-bold text-slate-700 mb-1">Công Ty Gửi Hàng:</label>
+          <input type="text" value="Công ty Cổ phần Thực phẩm LC FOODS" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" readonly />
         </div>
         <div>
-          <label class="block font-bold text-slate-300 mb-1">Sản Phẩm:</label>
-          <input type="text" value="Há Cảo & Sủi Cảo Đông Lạnh (-18°C ~ -25°C)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-rose-300 font-bold" readonly />
+          <label class="block font-bold text-slate-700 mb-1">Sản Phẩm:</label>
+          <input type="text" value="Há Cảo & Sủi Cảo Đông Lạnh (-18°C ~ -25°C)" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-rose-600 font-bold" readonly />
         </div>
         <div>
-          <label class="block font-bold text-slate-300 mb-1">Địa Điểm Lấy → Giao:</label>
-          <input type="text" value="NM LC Foods Bình Dương → DC WinMart Miền Nam" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white" />
+          <label class="block font-bold text-slate-700 mb-1">Địa Điểm Lấy → Giao:</label>
+          <input type="text" value="NM LC Foods Bình Dương → DC WinMart Miền Nam" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-900" />
         </div>
         <button type="submit" class="w-full py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-lg">
           Xác Nhận Gửi Yêu Cầu Báo Giá
@@ -435,16 +442,36 @@
     let selectedCarrierIds = [];
     let calcMode = 'FTL';
     let isIotBreach = false;
+    let isDarkMode = false;
+
+    function toggleDarkMode() {
+      isDarkMode = !isDarkMode;
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      const label = document.getElementById('theme-label');
+
+      if (isDarkMode) {
+        html.className = 'dark';
+        document.body.className = 'bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col transition-colors duration-200';
+        icon.innerText = '🌙';
+        label.innerText = 'Nền Tối';
+      } else {
+        html.className = 'light';
+        document.body.className = 'bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col transition-colors duration-200';
+        icon.innerText = '☀️';
+        label.innerText = 'Nền Sáng';
+      }
+    }
 
     function switchTab(tabId) {
       activeTab = tabId;
       ['carriers', 'calculator', 'dcs', 'iot'].forEach(t => {
         document.getElementById('view-' + t).classList.add('hidden');
-        document.getElementById('tab-btn-' + t).className = 'px-4 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition';
+        document.getElementById('tab-btn-' + t).className = 'px-4 py-2.5 rounded-xl text-slate-600 hover:text-rose-600 hover:bg-white transition';
       });
 
       document.getElementById('view-' + tabId).classList.remove('hidden');
-      document.getElementById('tab-btn-' + tabId).className = 'px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-md transition';
+      document.getElementById('tab-btn-' + tabId).className = 'px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-md transition';
     }
 
     function renderProductFilters() {
@@ -452,11 +479,11 @@
       container.innerHTML = LC_FOODS_PRODUCT_GROUPS.map(g => `
         <button
           onclick="toggleProductGroup('${g.id}')"
-          class="p-2.5 rounded-2xl border text-left flex flex-col justify-between transition ${selectedProductGroupId === g.id ? 'bg-rose-500/20 border-rose-500 text-rose-300 font-bold ring-1 ring-rose-500' : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700'}"
+          class="p-2.5 rounded-2xl border text-left flex flex-col justify-between transition ${selectedProductGroupId === g.id ? 'bg-rose-50 border-rose-400 text-rose-800 font-bold ring-2 ring-rose-400 shadow-sm' : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300'}"
         >
           <span class="text-lg">${g.icon}</span>
           <span class="text-xs font-bold line-clamp-1 mt-1">${g.name}</span>
-          <span class="text-[10px] text-rose-400 font-semibold mt-1">${g.tempRange}</span>
+          <span class="text-[10px] text-rose-600 font-semibold mt-1">${g.tempRange}</span>
         </button>
       `).join('');
     }
@@ -471,10 +498,10 @@
       selectedRegion = region;
       ['all', 'Bac', 'Nam', 'Tay', 'Bắc - Nam'].forEach(r => {
         const btn = document.getElementById('reg-' + r);
-        if (btn) btn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-950 border border-slate-800 text-slate-400 hover:text-white';
+        if (btn) btn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200';
       });
       const activeBtn = document.getElementById('reg-' + (region === 'Bắc' ? 'Bac' : region === 'Tây' ? 'Tay' : region));
-      if (activeBtn) activeBtn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-rose-600 text-white shadow-md';
+      if (activeBtn) activeBtn.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-rose-600 text-white shadow-sm';
       
       renderCarriers();
     }
@@ -495,7 +522,7 @@
       grid.innerHTML = filtered.map(c => {
         const isSelected = selectedCarrierIds.includes(c.id);
         return `
-          <div class="p-6 rounded-3xl bg-slate-900 border flex flex-col justify-between space-y-4 transition hover:shadow-2xl ${isSelected ? 'border-rose-500 ring-2 ring-rose-500/40 bg-slate-900/90' : 'border-slate-800'}">
+          <div class="p-6 rounded-3xl bg-white border flex flex-col justify-between space-y-4 transition hover:shadow-xl ${isSelected ? 'border-rose-500 ring-2 ring-rose-400/50 shadow-md' : 'border-slate-200 shadow-sm'}">
             <div>
               <div class="flex justify-between items-start">
                 <div class="flex space-x-3 items-center">
@@ -503,39 +530,39 @@
                     ${c.logoText}
                   </div>
                   <div>
-                    <h3 class="font-bold text-white text-base">${c.name}</h3>
-                    <p class="text-xs text-slate-400">${c.type}</p>
+                    <h3 class="font-bold text-slate-900 text-base">${c.name}</h3>
+                    <p class="text-xs text-slate-500 font-medium">${c.type}</p>
                   </div>
                 </div>
-                <button onclick="toggleCompareCarrier('${c.id}')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${isSelected ? 'bg-rose-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'}">
+                <button onclick="toggleCompareCarrier('${c.id}')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${isSelected ? 'bg-rose-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">
                   ${isSelected ? '✓ Đã chọn' : '+ So sánh'}
                 </button>
               </div>
 
-              <div class="mt-4 p-3 rounded-2xl bg-slate-950 border border-slate-800 grid grid-cols-2 gap-2 text-xs">
+              <div class="mt-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <span class="text-[10px] text-slate-400 uppercase block font-bold">Duyệt Kho MT (OTIF):</span>
-                  <span class="font-bold text-emerald-400 text-sm">${c.mtOtifScore}% Chuẩn Giờ</span>
+                  <span class="text-[10px] text-slate-500 uppercase block font-bold">Duyệt Kho MT (OTIF):</span>
+                  <span class="font-bold text-emerald-600 text-sm">${c.mtOtifScore}% Chuẩn Giờ</span>
                 </div>
                 <div>
-                  <span class="text-[10px] text-slate-400 uppercase block font-bold">Tuyến Phụ Sóng:</span>
-                  <span class="font-bold text-amber-300">${c.region}</span>
+                  <span class="text-[10px] text-slate-500 uppercase block font-bold">Tuyến Phủ Sóng:</span>
+                  <span class="font-bold text-amber-700">${c.region}</span>
                 </div>
               </div>
 
               <div class="mt-4 space-y-1.5 text-xs">
-                <div class="flex justify-between text-slate-300">
+                <div class="flex justify-between text-slate-600">
                   <span>Cước đông lạnh ghép (LTL):</span>
-                  <span class="font-bold text-rose-400">${c.ltlFrozenKg.toLocaleString()} VND/kg</span>
+                  <span class="font-bold text-rose-600">${c.ltlFrozenKg.toLocaleString()} VND/kg</span>
                 </div>
-                <div class="flex justify-between text-slate-300">
+                <div class="flex justify-between text-slate-600">
                   <span>Cước FTL xe 1.5T nội thành:</span>
-                  <span class="font-bold text-white">${c.ftlShort.toLocaleString()} VND/chuyến</span>
+                  <span class="font-bold text-slate-900">${c.ftlShort.toLocaleString()} VND/chuyến</span>
                 </div>
               </div>
 
-              <ul class="mt-4 space-y-1 text-xs text-slate-400">
-                ${c.features.map(f => `<li>✓ ${f}</li>`).join('')}
+              <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+                ${c.features.map(f => `<li class="flex items-start space-x-1.5"><span class="text-emerald-500 font-bold">✓</span><span>${f}</span></li>`).join('')}
               </ul>
             </div>
 
@@ -570,24 +597,24 @@
       const selectedCarriers = CARRIERS_DATA.filter(c => selectedCarrierIds.includes(c.id));
       const container = document.getElementById('comparison-modal-body');
       container.innerHTML = selectedCarriers.map(c => `
-        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
           <div class="flex items-center space-x-2">
             <div class="w-8 h-8 rounded-lg bg-gradient-to-br ${c.themeColor} flex items-center justify-center font-bold text-white text-xs">
               ${c.logoText}
             </div>
             <div>
-              <h4 class="font-bold text-white text-xs">${c.name}</h4>
-              <span class="text-[10px] text-slate-400">${c.type}</span>
+              <h4 class="font-bold text-slate-900 text-xs">${c.name}</h4>
+              <span class="text-[10px] text-slate-500">${c.type}</span>
             </div>
           </div>
 
-          <div class="space-y-1 border-t border-slate-800 pt-2 text-xs">
-            <div class="flex justify-between"><span>OTIF Kho DC:</span><strong class="text-emerald-400">${c.mtOtifScore}%</strong></div>
-            <div class="flex justify-between"><span>LTL Đông lạnh:</span><strong class="text-rose-400">${c.ltlFrozenKg.toLocaleString()} VND/kg</strong></div>
-            <div class="flex justify-between"><span>FTL Xe 1.5T:</span><strong class="text-white">${c.ftlShort.toLocaleString()} VND</strong></div>
+          <div class="space-y-1 border-t border-slate-200 pt-2 text-xs">
+            <div class="flex justify-between"><span>OTIF Kho DC:</span><strong class="text-emerald-600">${c.mtOtifScore}%</strong></div>
+            <div class="flex justify-between"><span>LTL Đông lạnh:</span><strong class="text-rose-600">${c.ltlFrozenKg.toLocaleString()} VND/kg</strong></div>
+            <div class="flex justify-between"><span>FTL Xe 1.5T:</span><strong class="text-slate-900">${c.ftlShort.toLocaleString()} VND</strong></div>
           </div>
 
-          <button onclick="closeComparisonModal(); openRfqModalById('${c.id}')" class="w-full py-2 rounded-xl bg-rose-600 text-white font-bold text-xs">
+          <button onclick="closeComparisonModal(); openRfqModalById('${c.id}')" class="w-full py-2 rounded-xl bg-rose-600 text-white font-bold text-xs shadow-sm">
             Báo Giá Ngay
           </button>
         </div>
@@ -619,7 +646,7 @@
         id: 'carrier_' + Date.now(),
         name: name,
         logoText: name.substring(0, 3).toUpperCase(),
-        themeColor: 'from-amber-600 to-rose-600',
+        themeColor: 'from-amber-500 to-rose-600',
         type: 'Đối tác mới LC Foods',
         rating: 5.0,
         reviewCount: 1,
@@ -639,13 +666,13 @@
     function setCalcMode(mode) {
       calcMode = mode;
       if (mode === 'FTL') {
-        document.getElementById('btn-mode-ftl').className = 'p-3 rounded-2xl border font-bold bg-rose-500/20 border-rose-500 text-rose-300';
-        document.getElementById('btn-mode-ltl').className = 'p-3 rounded-2xl border font-bold bg-slate-950 border-slate-800 text-slate-400';
+        document.getElementById('btn-mode-ftl').className = 'p-3 rounded-2xl border font-bold bg-rose-50 border-rose-300 text-rose-700';
+        document.getElementById('btn-mode-ltl').className = 'p-3 rounded-2xl border font-bold bg-slate-50 border-slate-200 text-slate-600';
         document.getElementById('box-truck-select').classList.remove('hidden');
         document.getElementById('box-weight-input').classList.add('hidden');
       } else {
-        document.getElementById('btn-mode-ltl').className = 'p-3 rounded-2xl border font-bold bg-rose-500/20 border-rose-500 text-rose-300';
-        document.getElementById('btn-mode-ftl').className = 'p-3 rounded-2xl border font-bold bg-slate-950 border-slate-800 text-slate-400';
+        document.getElementById('btn-mode-ltl').className = 'p-3 rounded-2xl border font-bold bg-rose-50 border-rose-300 text-rose-700';
+        document.getElementById('btn-mode-ftl').className = 'p-3 rounded-2xl border font-bold bg-slate-50 border-slate-200 text-slate-600';
         document.getElementById('box-weight-input').classList.remove('hidden');
         document.getElementById('box-truck-select').classList.add('hidden');
       }
@@ -679,13 +706,13 @@
     function renderDcSpecs() {
       const container = document.getElementById('dc-specs-container');
       container.innerHTML = SUPERMARKET_DCS.map(dc => `
-        <div class="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
-          <h3 class="font-bold text-base text-rose-400">${dc.name} (${dc.chain})</h3>
-          <p class="text-slate-400">📍 ${dc.location} | ⏰ Giờ nhận: ${dc.hours}</p>
-          <div class="p-3 rounded-xl bg-sky-950/40 border border-sky-500/30 text-sky-200">
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <h3 class="font-bold text-base text-rose-600">${dc.name} (${dc.chain})</h3>
+          <p class="text-slate-600">📍 ${dc.location} | ⏰ Giờ nhận: ${dc.hours}</p>
+          <div class="p-3.5 rounded-xl bg-sky-50 border border-sky-200 text-sky-900">
             <strong>Nhiệt độ đông lạnh (-18°C ~ -25°C):</strong> ${dc.frozenRule}
           </div>
-          <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300">
+          <div class="p-3.5 rounded-xl bg-white border border-slate-200 text-slate-700">
             <strong>Tiêu chuẩn đóng Pallet:</strong> ${dc.palletSpec}
           </div>
         </div>
@@ -699,12 +726,12 @@
       const status = document.getElementById('iot-temp-status');
 
       if (isIotBreach) {
-        gauge.className = 'lg:col-span-5 p-6 rounded-3xl bg-rose-950/60 border border-rose-500 text-center space-y-4 shadow-2xl animate-pulse';
-        val.className = 'text-6xl font-black text-rose-500 tracking-tight';
+        gauge.className = 'lg:col-span-5 p-6 rounded-3xl bg-rose-900 text-white border border-rose-500 text-center space-y-4 shadow-2xl animate-pulse';
+        val.className = 'text-6xl font-black text-rose-300 tracking-tight';
         val.innerText = '-16.2°C';
         status.innerText = '⚠️ CẢNH BÁO: Nhiệt độ vượt ngưỡng -18°C! Đã gửi SMS tới tài xế!';
       } else {
-        gauge.className = 'lg:col-span-5 p-6 rounded-3xl bg-slate-950 border border-sky-500/40 text-center space-y-4';
+        gauge.className = 'lg:col-span-5 p-6 rounded-3xl bg-slate-900 text-white border border-sky-500/40 text-center space-y-4';
         val.className = 'text-6xl font-black text-sky-400 tracking-tight';
         val.innerText = '-20.4°C';
         status.innerText = 'Nhiệt độ mục tiêu: -20.0°C (Giữ đông âm chuẩn mực)';
