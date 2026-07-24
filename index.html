@@ -60,7 +60,7 @@
           🚛 Nhà Xe (<span id="total-carriers-count">12</span>)
         </button>
         <button id="tab-btn-calculator" onclick="switchTab('calculator')" class="px-4 py-2.5 rounded-xl text-slate-600 hover:text-rose-600 hover:bg-white transition">
-          🧮 Bộ 5 Công Cụ Điều Vận
+          🧮 Bộ 6 Công Cụ Điều Vận
         </button>
         <button id="tab-btn-dcs" onclick="switchTab('dcs')" class="px-4 py-2.5 rounded-xl text-slate-600 hover:text-rose-600 hover:bg-white transition">
           🏢 Quy Chuẩn Kho DC Siêu Thị
@@ -99,17 +99,17 @@
         </div>
 
         <h1 class="text-2xl sm:text-4xl font-display font-extrabold text-slate-900 leading-tight">
-          Bộ Công Cụ Tính Toán <span class="text-rose-600">Điều Vận & Chuỗi Cung Ứng Lạnh</span> 63 Tỉnh Thành
+          Bộ Công Cụ Tính Toán <span class="text-rose-600">Quy Cách Kg, CBM & Phân Phối Xe</span>
         </h1>
 
         <p class="text-xs text-slate-600 leading-relaxed font-medium">
-          Giải pháp tối ưu chi phí vận tải, tính toán tải trọng Pallet/Thùng, lập lịch Time-slot kho DC siêu thị và phân tích hòa vốn FTL vs. LTL cho các dòng sản phẩm <strong>Há Cảo, Sủi Cảo, Xúc Xích LC FOODS</strong>.
+          Giải pháp tối ưu chi phí vận tải, tính toán quy cách Thùng (Kg & CBM), phân bổ xe phù hợp tải trọng/thể tích, lập lịch Time-slot kho DC siêu thị cho sản phẩm <strong>LC FOODS</strong>.
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3 border-t border-rose-200/60 text-xs">
           <div><span class="text-slate-500 text-[10px] block font-bold uppercase">NHÀ XE TÍCH HỢP:</span><strong class="text-slate-900 text-sm" id="badge-carrier-num">12 Đơn vị uy tín</strong></div>
-          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">MÔ HÌNH TÍNH TOÁN:</span><strong class="text-emerald-600 text-sm">5 Công cụ chuyên sâu</strong></div>
-          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">CHUẨN NHIỆT ĐỘ:</span><strong class="text-sky-600 text-sm">-25°C đến +25°C</strong></div>
+          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">MÔ HÌNH TÍNH TOÁN:</span><strong class="text-emerald-600 text-sm">6 Công cụ chuyên sâu</strong></div>
+          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">TÍNH TOÁN KÍCH THƯỚC:</span><strong class="text-sky-600 text-sm">Kg & CBM Thùng Hàng</strong></div>
           <div><span class="text-slate-500 text-[10px] block font-bold uppercase">MỤC TIÊU KHO MT:</span><strong class="text-amber-600 text-sm">OTIF &gt; 98.5%</strong></div>
         </div>
       </div>
@@ -180,12 +180,15 @@
 
     </div>
 
-    <!-- SECTION 2: BỘ 5 CÔNG CỤ TÍNH TOÁN & ĐIỀU VẬN -->
+    <!-- SECTION 2: BỘ 6 CÔNG CỤ TÍNH TOÁN & ĐIỀU VẬN -->
     <div id="view-calculator" class="hidden space-y-6">
       
-      <!-- Sub Nav Bar for 5 Calculators -->
+      <!-- Sub Nav Bar for 6 Calculators -->
       <div class="bg-white border border-slate-200 p-2 rounded-2xl shadow-sm flex flex-wrap gap-2 text-xs font-bold">
-        <button id="calc-subtab-btn-1" onclick="switchCalcSubtab(1)" class="px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-sm transition">
+        <button id="calc-subtab-btn-6" onclick="switchCalcSubtab(6)" class="px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-sm transition">
+          📐 6. Quy Cách (Kg & CBM) Phân Phối Xe
+        </button>
+        <button id="calc-subtab-btn-1" onclick="switchCalcSubtab(1)" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition">
           🧮 1. Tính Cước & Báo Giá Nhanh
         </button>
         <button id="calc-subtab-btn-2" onclick="switchCalcSubtab(2)" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition">
@@ -202,8 +205,92 @@
         </button>
       </div>
 
+      <!-- SUB-TOOL 6: SPEC CBM & WEIGHT TRUCK ALLOCATION ENGINE -->
+      <div id="calc-subtool-6" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-xs">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-xl font-display font-bold text-slate-900">📐 6. Công Cụ Nhập Quy Cách (Kg & CBM) Để Phân Phối & Điều Xe</h2>
+          <p class="text-xs text-slate-500">Tính tổng khối lượng (Kg) và tổng thể tích (CBM) theo kích thước Dài x Rộng x Cao của thùng hàng để chọn loại xe phù hợp nhất.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Input Column -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+              <label class="block font-bold text-slate-800 text-sm">Chọn Mẫu Sản Phẩm LC FOODS Có Sẵn:</label>
+              <select id="cbm-preset-sku" onchange="applySkuPreset()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold">
+                <option value="custom">-- Tự Nhập Kích Thước Tuỳ Chỉnh --</option>
+                <option value="dimsum" selected>Há Cảo / Sủi Cảo Đông Lạnh (38 x 28 x 22 cm | 10 kg/thùng)</option>
+                <option value="fresh_sausage">Xúc Xích Tươi 0-5°C (30 x 20 x 15 cm | 5 kg/thùng)</option>
+                <option value="garden_sausage">Xúc Xích Tiệt Trùng Vườn Cây (40 x 30 x 25 cm | 12 kg/thùng)</option>
+                <option value="pizza">Pizza Đông Lạnh La Cusina (35 x 35 x 20 cm | 8 kg/thùng)</option>
+                <option value="canned">Đồ Hộp & Gia Vị La Cusina (32 x 22 x 18 cm | 15 kg/thùng)</option>
+              </select>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+              <h3 class="font-bold text-slate-900 text-sm">Thông Số Quy Cách Thùng Hàng:</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div>
+                  <label class="block font-bold text-slate-700 mb-1">Chiều Dài (cm):</label>
+                  <input type="number" id="cbm-length" value="38" oninput="calcCbmAllocation()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+                </div>
+                <div>
+                  <label class="block font-bold text-slate-700 mb-1">Chiều Rộng (cm):</label>
+                  <input type="number" id="cbm-width" value="28" oninput="calcCbmAllocation()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+                </div>
+                <div>
+                  <label class="block font-bold text-slate-700 mb-1">Chiều Cao (cm):</label>
+                  <input type="number" id="cbm-height" value="22" oninput="calcCbmAllocation()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-bold text-slate-700 mb-1">Trọng Lượng 1 Thùng (Kg):</label>
+                  <input type="number" id="cbm-weight-per-box" value="10" oninput="calcCbmAllocation()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold text-sm" />
+                </div>
+                <div>
+                  <label class="block font-bold text-slate-700 mb-1">Số Lượng Thùng Xuất Kho:</label>
+                  <input type="number" id="cbm-box-count" value="450" oninput="calcCbmAllocation()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-rose-600 font-bold text-sm" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Column -->
+          <div class="lg:col-span-5 p-6 rounded-3xl bg-slate-900 text-white space-y-5 flex flex-col justify-between shadow-xl">
+            <div>
+              <h3 class="font-bold text-amber-400 text-base border-b border-slate-800 pb-3">Phân Tích Thể Tích (CBM) & Tải Trọng (Kg)</h3>
+              
+              <div class="py-3 space-y-2.5 text-xs">
+                <div class="flex justify-between"><span>Thể tích 1 thùng:</span><strong class="text-white" id="cbm-out-single-cbm">0.0234 CBM</strong></div>
+                <div class="flex justify-between"><span>Tổng thể tích lô hàng:</span><strong class="text-sky-400 font-bold text-sm" id="cbm-out-total-cbm">10.53 CBM</strong></div>
+                <div class="flex justify-between"><span>Tổng trọng lượng lô hàng:</span><strong class="text-rose-400 font-bold text-sm" id="cbm-out-total-weight">4,500 kg (4.5 Tấn)</strong></div>
+                <div class="flex justify-between border-t border-slate-800 pt-2 text-xs">
+                  <span>Mật độ hàng hóa (Density):</span>
+                  <strong class="text-slate-300" id="cbm-out-density">427.4 kg/CBM (Hàng Đông Nặng)</strong>
+                </div>
+              </div>
+
+              <!-- Recommended Truck Allocation -->
+              <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block">🚛 Khuyến Nghị Phân Bổ Xe Cho Điều Vận:</span>
+                <div class="text-base font-extrabold text-white" id="cbm-out-truck-rec">1 Xe Lạnh 5.0 Tấn (Hoặc 2 Xe 3.5T)</div>
+                <p class="text-[11px] text-slate-300 leading-relaxed" id="cbm-out-truck-detail">
+                  Tỷ lệ lấp đầy thể tích: 43.9% CBM | Tỷ lệ lấp đầy tải trọng: 90.0% Kg.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-800 text-[11px] text-amber-300 font-semibold border border-amber-500/30" id="cbm-out-bottleneck">
+              💡 Lưu ý điều vận: Lô hàng bị giới hạn bởi TRỌNG LƯỢNG (Kg) trước khi kịch thể tích CBM.
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- SUB-TOOL 1: FREIGHT ESTIMATOR -->
-      <div id="calc-subtool-1" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+      <div id="calc-subtool-1" class="hidden bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
         <div class="border-b border-slate-100 pb-4">
           <h2 class="text-xl font-display font-bold text-slate-900">🧮 1. Công Cụ Ước Tính Cước Vận Chuyển Chi Tiết</h2>
           <p class="text-xs text-slate-500">Tính toán cước xe lạnh/xe khô theo khoảng cách địa lý, khối lượng và phụ phí giao siêu thị.</p>
@@ -622,6 +709,14 @@
       { id: 'ambient_canned_sauce', name: 'Đồ Đóng Hộp & Gia Vị Xốt', tempRange: 'Nhiệt độ phòng', icon: '🥫' }
     ];
 
+    const SKU_PRESETS = {
+      dimsum: { l: 38, w: 28, h: 22, kg: 10, count: 450 },
+      fresh_sausage: { l: 30, w: 20, h: 15, kg: 5, count: 600 },
+      garden_sausage: { l: 40, w: 30, h: 25, kg: 12, count: 350 },
+      pizza: { l: 35, w: 35, h: 20, kg: 8, count: 400 },
+      canned: { l: 32, w: 22, h: 18, kg: 15, count: 300 }
+    };
+
     let CARRIERS_DATA = [
       { id: 'aba_cooltrans', name: 'ABA Cooltrans Logistics', logoText: 'ABA', themeColor: 'from-blue-600 to-cyan-500', type: 'Cold Chain Specialist', rating: 4.9, reviewCount: 342, region: 'Nam', mtOtifScore: 98.5, ltlFrozenKg: 3800, ftlShort: 1400000, features: ['ThermoKing Datalogger truyền 5p/lần', 'Cam kết đền bù 100% nếu lệch nhiệt >2°C', 'Trả chứng từ POD trong 48h'] },
       { id: 'swire_cold', name: 'Swire Cold Storage Vietnam', logoText: 'SWIRE', themeColor: 'from-sky-700 to-blue-900', type: 'International Cold Chain', rating: 4.8, reviewCount: 215, region: 'Nam', mtOtifScore: 99.1, ltlFrozenKg: 4200, ftlShort: 1600000, features: ['Kho lạnh tự động cao cấp', 'Giám sát nhiệt chuẩn Âu', 'Bảo hiểm rủi ro up to $500k'] },
@@ -681,13 +776,14 @@
     }
 
     function switchCalcSubtab(toolId) {
-      [1, 2, 3, 4, 5].forEach(id => {
+      [1, 2, 3, 4, 5, 6].forEach(id => {
         document.getElementById('calc-subtool-' + id).classList.add('hidden');
         document.getElementById('calc-subtab-btn-' + id).className = 'px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition';
       });
       document.getElementById('calc-subtool-' + toolId).classList.remove('hidden');
       document.getElementById('calc-subtab-btn-' + toolId).className = 'px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-sm transition';
 
+      if (toolId === 6) calcCbmAllocation();
       if (toolId === 2) calcFtlVsLtl();
       if (toolId === 3) calcPayload();
       if (toolId === 4) calcTimeSlot();
@@ -883,6 +979,79 @@
       alert('Đã thêm nhà vận chuyển "' + name + '" vào danh sách LC FOODS thành công!');
     }
 
+    // Sub-tool 6: CBM & Weight Allocation Engine
+    function applySkuPreset() {
+      const val = document.getElementById('cbm-preset-sku').value;
+      if (val !== 'custom' && SKU_PRESETS[val]) {
+        const p = SKU_PRESETS[val];
+        document.getElementById('cbm-length').value = p.l;
+        document.getElementById('cbm-width').value = p.w;
+        document.getElementById('cbm-height').value = p.h;
+        document.getElementById('cbm-weight-per-box').value = p.kg;
+        document.getElementById('cbm-box-count').value = p.count;
+      }
+      calcCbmAllocation();
+    }
+
+    function calcCbmAllocation() {
+      const l = Number(document.getElementById('cbm-length').value) || 0;
+      const w = Number(document.getElementById('cbm-width').value) || 0;
+      const h = Number(document.getElementById('cbm-height').value) || 0;
+      const kgPerBox = Number(document.getElementById('cbm-weight-per-box').value) || 0;
+      const boxCount = Number(document.getElementById('cbm-box-count').value) || 0;
+
+      const cbmPerBox = (l * w * h) / 1000000;
+      const totalCbm = cbmPerBox * boxCount;
+      const totalKg = kgPerBox * boxCount;
+      const density = totalCbm > 0 ? (totalKg / totalCbm) : 0;
+
+      document.getElementById('cbm-out-single-cbm').innerText = cbmPerBox.toFixed(4) + ' CBM';
+      document.getElementById('cbm-out-total-cbm').innerText = totalCbm.toFixed(2) + ' CBM';
+      document.getElementById('cbm-out-total-weight').innerText = totalKg.toLocaleString('vi-VN') + ' kg (' + (totalKg / 1000).toFixed(2) + ' Tấn)';
+      document.getElementById('cbm-out-density').innerText = density.toFixed(1) + ' kg/CBM (' + (density > 300 ? 'Hàng Nặng/Đông Lạnh' : 'Hàng Nhẹ/Cồng Kềnh') + ')';
+
+      // Fleet Mix Logic
+      const truckSpecs = [
+        { name: 'Xe Lạnh 1.5 Tấn', maxKg: 1500, maxCbm: 8.5 },
+        { name: 'Xe Lạnh 3.5 Tấn', maxKg: 3500, maxCbm: 16.0 },
+        { name: 'Xe Lạnh 5.0 Tấn', maxKg: 5000, maxCbm: 24.0 },
+        { name: 'Xe Lạnh 8.0 Tấn', maxKg: 8000, maxCbm: 38.0 },
+        { name: 'Xe Lạnh 15 Tấn', maxKg: 15000, maxCbm: 60.0 },
+        { name: 'Cont Lạnh 40RF', maxKg: 26000, maxCbm: 67.5 }
+      ];
+
+      let recommendedTruck = null;
+      for (let t of truckSpecs) {
+        if (totalKg <= t.maxKg && totalCbm <= t.maxCbm) {
+          recommendedTruck = t;
+          break;
+        }
+      }
+
+      const recTitle = document.getElementById('cbm-out-truck-rec');
+      const recDetail = document.getElementById('cbm-out-truck-detail');
+      const bottleneck = document.getElementById('cbm-out-bottleneck');
+
+      if (recommendedTruck) {
+        const cbmUtil = ((totalCbm / recommendedTruck.maxCbm) * 100).toFixed(1);
+        const kgUtil = ((totalKg / recommendedTruck.maxKg) * 100).toFixed(1);
+        
+        recTitle.innerText = '1 ' + recommendedTruck.name;
+        recDetail.innerText = 'Tỷ lệ lấp đầy thể tích: ' + cbmUtil + '% CBM | Tỷ lệ lấp đầy tải trọng: ' + kgUtil + '% Kg.';
+
+        if (kgUtil >= cbmUtil) {
+          bottleneck.innerText = '💡 Khuyên dùng: Lô hàng bị giới hạn bởi TRỌNG LƯỢNG (Kg) trước khi kịch CBM. Tải trọng đạt ' + kgUtil + '%.';
+        } else {
+          bottleneck.innerText = '💡 Khuyên dùng: Lô hàng bị giới hạn bởi THỂ TÍCH (CBM) trước khi hết trọng tải Kg. Thể tích đạt ' + cbmUtil + '%.';
+        }
+      } else {
+        const num35 = Math.ceil(totalKg / 3500);
+        recTitle.innerText = 'Cần ' + num35 + ' Xe Lạnh 3.5 Tấn (Hoặc 1 Xe 15T / Cont 40RF)';
+        recDetail.innerText = 'Lô hàng quy mô lớn: ' + totalKg.toLocaleString('vi-VN') + ' kg & ' + totalCbm.toFixed(2) + ' CBM. Khuyên ghép đội xe lớn.';
+        bottleneck.innerText = '⚠️ Đội xe nhỏ 1 xe không đủ tải! Hãy chia thành nhiều chuyến hoặc điều xe Container lạnh.';
+      }
+    }
+
     // Sub-tool 1: Freight Estimator
     function setCalcMode(mode) {
       calcMode = mode;
@@ -932,7 +1101,7 @@
 
       const ltlCost = weight * rate;
       const ftlBase = dist <= 40 ? 1800000 : 1800000 + (dist - 40) * 22000;
-      const ftlCost = ftlBase * 1.15; // with cold surcharge
+      const ftlCost = ftlBase * 1.15;
 
       const breakevenWeight = Math.round(ftlCost / rate);
 
@@ -981,7 +1150,7 @@
       const waitMins = Number(document.getElementById('ts-wait-mins').value) || 40;
 
       const [h, m] = slotTimeStr.split(':').map(Number);
-      const totalLead = driveMins + waitMins + 20; // 20 min buffer
+      const totalLead = driveMins + waitMins + 20;
 
       let depMins = h * 60 + m - totalLead;
       if (depMins < 0) depMins += 24 * 60;
@@ -1067,6 +1236,7 @@
     renderProductFilters();
     renderCarriers();
     renderDcSpecs();
+    calcCbmAllocation();
     updateCalculation();
   </script>
 </body>
