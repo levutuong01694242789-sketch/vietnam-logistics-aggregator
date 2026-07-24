@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VietLogis Food - Sàn So Sánh & Vận Tải Thực Phẩm LC FOODS</title>
+    <meta name="description" content="Hệ thống so sánh, tìm kiếm và kết nối nhà vận chuyển thực phẩm khô và thực phẩm đông lạnh toàn quốc chuyên biệt cho LC Foods và các doanh nghiệp thực phẩm." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+              display: ['Outfit', 'sans-serif'],
+            },
+            colors: {
+              lcfoods: {
+                red: '#E11D48',
+                darkred: '#9F1239',
+                gold: '#F59E0B',
+                blue: '#0284C7',
+                coldblue: '#0369A1',
+                ice: '#E0F2FE',
+                dark: '#0F172A',
+                navy: '#1E293B',
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-rose-500 selection:text-white min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
