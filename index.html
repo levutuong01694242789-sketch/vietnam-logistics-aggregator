@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VietLogis Food - Sàn Vận Tải Thực Phẩm LC FOODS</title>
+  <title>VietLogis Food - Trung Tâm Điều Vận Thực Phẩm LC FOODS</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,19 +48,19 @@
         <div>
           <div class="flex items-center space-x-2">
             <span class="font-display font-extrabold text-2xl text-slate-900">VietLogis <span class="text-rose-600">Food</span></span>
-            <span class="px-2.5 py-0.5 text-[10px] font-bold bg-rose-100 text-rose-700 border border-rose-200 rounded-full">LC FOODS Hub</span>
+            <span class="px-2.5 py-0.5 text-[10px] font-bold bg-rose-100 text-rose-700 border border-rose-200 rounded-full">Phòng Điều Vận LC FOODS</span>
           </div>
-          <p class="text-xs text-slate-500 font-medium">Sàn So Sánh & Vận Tải Thực Phẩm Khô & Đông Lạnh</p>
+          <p class="text-xs text-slate-500 font-medium">Trung Tâm Quản Lý & Điều Mối Vận Tải Toàn Quốc</p>
         </div>
       </div>
 
       <!-- Navigation Tabs -->
       <nav class="hidden md:flex items-center space-x-1 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 text-xs font-bold">
         <button id="tab-btn-carriers" onclick="switchTab('carriers')" class="px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-md transition">
-          🚛 So Sánh (<span id="total-carriers-count">12</span> Nhà Xe)
+          🚛 Nhà Xe (<span id="total-carriers-count">12</span>)
         </button>
         <button id="tab-btn-calculator" onclick="switchTab('calculator')" class="px-4 py-2.5 rounded-xl text-slate-600 hover:text-rose-600 hover:bg-white transition">
-          🧮 Tính Cước Vận Chuyển
+          🧮 Bộ 5 Công Cụ Điều Vận
         </button>
         <button id="tab-btn-dcs" onclick="switchTab('dcs')" class="px-4 py-2.5 rounded-xl text-slate-600 hover:text-rose-600 hover:bg-white transition">
           🏢 Quy Chuẩn Kho DC Siêu Thị
@@ -70,7 +70,7 @@
         </button>
       </nav>
 
-      <!-- Action & Counter & Theme Switcher -->
+      <!-- Action Buttons -->
       <div class="flex items-center space-x-3">
         <!-- Theme Toggle -->
         <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200 font-bold text-xs flex items-center space-x-1.5 transition">
@@ -95,22 +95,22 @@
     <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-rose-50 via-amber-50/50 to-sky-50 border border-rose-100 p-8 sm:p-10 shadow-sm">
       <div class="relative z-10 max-w-3xl space-y-3">
         <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-rose-200 text-rose-700 text-xs font-bold shadow-sm">
-          <span>❄️ Nền Tảng Tìm Kiếm Vận Tải Chuyên Biệt Cho LC FOODS (La Cusina)</span>
+          <span>🎯 Hệ Thống Hỗ Trợ Ra Quyết Định & Điều Vận Cho LC FOODS (La Cusina)</span>
         </div>
 
         <h1 class="text-2xl sm:text-4xl font-display font-extrabold text-slate-900 leading-tight">
-          Sàn So Sánh <span class="text-rose-600">12+ Nhà Vận Chuyển Thực Phẩm</span> Toàn Quốc
+          Bộ Công Cụ Tính Toán <span class="text-rose-600">Điều Vận & Chuỗi Cung Ứng Lạnh</span> 63 Tỉnh Thành
         </h1>
 
         <p class="text-xs text-slate-600 leading-relaxed font-medium">
-          Tối ưu hóa cước phí & chất lượng chuỗi lạnh -18°C ~ -25°C cho <strong>Há Cảo, Sủi Cảo, Xúc Xích Đông Lạnh</strong> và hàng mát/tiệt trùng. Đáp ứng khung giờ giao kho DC Siêu thị (MT) & mạng lưới phân phối đại lý (GT) 63 tỉnh thành.
+          Giải pháp tối ưu chi phí vận tải, tính toán tải trọng Pallet/Thùng, lập lịch Time-slot kho DC siêu thị và phân tích hòa vốn FTL vs. LTL cho các dòng sản phẩm <strong>Há Cảo, Sủi Cảo, Xúc Xích LC FOODS</strong>.
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3 border-t border-rose-200/60 text-xs">
           <div><span class="text-slate-500 text-[10px] block font-bold uppercase">NHÀ XE TÍCH HỢP:</span><strong class="text-slate-900 text-sm" id="badge-carrier-num">12 Đơn vị uy tín</strong></div>
-          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">DUYỆT KHO MT:</span><strong class="text-emerald-600 text-sm">98.5% OTIF</strong></div>
+          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">MÔ HÌNH TÍNH TOÁN:</span><strong class="text-emerald-600 text-sm">5 Công cụ chuyên sâu</strong></div>
           <div><span class="text-slate-500 text-[10px] block font-bold uppercase">CHUẨN NHIỆT ĐỘ:</span><strong class="text-sky-600 text-sm">-25°C đến +25°C</strong></div>
-          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">ĐỘ PHỦ TUYẾN:</span><strong class="text-amber-600 text-sm">63 Tỉnh Thành</strong></div>
+          <div><span class="text-slate-500 text-[10px] block font-bold uppercase">MỤC TIÊU KHO MT:</span><strong class="text-amber-600 text-sm">OTIF &gt; 98.5%</strong></div>
         </div>
       </div>
     </div>
@@ -180,12 +180,33 @@
 
     </div>
 
-    <!-- SECTION 2: SHIPPING COST CALCULATOR -->
-    <div id="view-calculator" class="hidden">
-      <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
+    <!-- SECTION 2: BỘ 5 CÔNG CỤ TÍNH TOÁN & ĐIỀU VẬN -->
+    <div id="view-calculator" class="hidden space-y-6">
+      
+      <!-- Sub Nav Bar for 5 Calculators -->
+      <div class="bg-white border border-slate-200 p-2 rounded-2xl shadow-sm flex flex-wrap gap-2 text-xs font-bold">
+        <button id="calc-subtab-btn-1" onclick="switchCalcSubtab(1)" class="px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-sm transition">
+          🧮 1. Tính Cước & Báo Giá Nhanh
+        </button>
+        <button id="calc-subtab-btn-2" onclick="switchCalcSubtab(2)" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          ⚖️ 2. So Sánh FTL vs LTL (Hòa Vốn)
+        </button>
+        <button id="calc-subtab-btn-3" onclick="switchCalcSubtab(3)" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          📦 3. Tính Tải Lượng & Pallet/Thùng
+        </button>
+        <button id="calc-subtab-btn-4" onclick="switchCalcSubtab(4)" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          ⏱️ 4. Lịch Time-Slot Kho DC Siêu Thị
+        </button>
+        <button id="calc-subtab-btn-5" onclick="switchCalcSubtab(5)" class="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          💸 5. Chi Phí Rủi Ro & Phạt Trễ
+        </button>
+      </div>
+
+      <!-- SUB-TOOL 1: FREIGHT ESTIMATOR -->
+      <div id="calc-subtool-1" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
         <div class="border-b border-slate-100 pb-4">
-          <h2 class="text-xl font-display font-bold text-slate-900">🧮 Công Cụ Tính Cước Vận Chuyển LC FOODS</h2>
-          <p class="text-xs text-slate-500">Ước tính chi tiết cước xe lạnh/xe khô theo khoảng cách, trọng tải và phụ phí giao siêu thị.</p>
+          <h2 class="text-xl font-display font-bold text-slate-900">🧮 1. Công Cụ Ước Tính Cước Vận Chuyển Chi Tiết</h2>
+          <p class="text-xs text-slate-500">Tính toán cước xe lạnh/xe khô theo khoảng cách địa lý, khối lượng và phụ phí giao siêu thị.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -253,6 +274,191 @@
           </div>
         </div>
       </div>
+
+      <!-- SUB-TOOL 2: FTL VS LTL BREAKEVEN ANALYZER -->
+      <div id="calc-subtool-2" class="hidden bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-xs">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-xl font-display font-bold text-slate-900">⚖️ 2. Công Cụ So Sánh Chi Phí Nguyên Xe (FTL) vs. Gửi Ghép (LTL)</h2>
+          <p class="text-xs text-slate-500">Xác định ngưỡng trọng lượng hòa vốn (Break-even Threshold) giúp điều vận quyết định thuê trọn xe hay gửi ghép.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
+            <h3 class="font-bold text-sm text-slate-900">Nhập Thông Tin Đơn Hàng Vận Chuyển:</h3>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Tổng Khối Lượng Lô Hàng (Kg):</label>
+              <input type="number" id="ftl-ltl-weight" value="2800" oninput="calcFtlVsLtl()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold text-sm" />
+            </div>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Quãng Đường Tuyến Giao (km):</label>
+              <input type="number" id="ftl-ltl-dist" value="175" oninput="calcFtlVsLtl()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold text-sm" />
+            </div>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Đơn Giá Ghép LTL Đông Lạnh (VND/kg):</label>
+              <input type="number" id="ftl-ltl-rate" value="3800" oninput="calcFtlVsLtl()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold text-sm" />
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 flex flex-col justify-between shadow-md">
+            <div>
+              <h3 class="font-bold text-rose-400 text-sm border-b border-slate-800 pb-2">Kết Quả Phân Tích Điều Vận:</h3>
+              <div class="py-3 space-y-2 text-xs">
+                <div class="flex justify-between"><span>Chi phí gửi ghép LTL:</span><strong class="text-white" id="ftl-ltl-out-ltl">10,640,000 VND</strong></div>
+                <div class="flex justify-between"><span>Chi phí thuê nguyên xe 3.5T (FTL):</span><strong class="text-amber-400" id="ftl-ltl-out-ftl">4,770,000 VND</strong></div>
+                <div class="flex justify-between border-t border-slate-800 pt-2 text-sm">
+                  <span>Ngưỡng hòa vốn (Break-even):</span>
+                  <strong class="text-emerald-400" id="ftl-ltl-out-breakeven">1,255 kg</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-emerald-300 font-bold leading-relaxed" id="ftl-ltl-recommendation">
+              💡 Khuyên dùng: Nên thuê NGUYÊN XE (FTL) để tiết kiệm 5,870,000 VND và kiểm soát nhiệt độ an toàn 100%!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-TOOL 3: TRUCK PAYLOAD & FILL RATE CALCULATOR -->
+      <div id="calc-subtool-3" class="hidden bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-xs">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-xl font-display font-bold text-slate-900">📦 3. Công Cụ Tính Tải Lượng Thùng & Pallet Lên Xe</h2>
+          <p class="text-xs text-slate-500">Tính toán số Thùng Há Cảo/Sủi Cảo, số Pallet tiêu chuẩn và % lấp đầy thùng xe (Payload Fill Rate %).</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <h3 class="font-bold text-sm text-slate-900">Quy Chuẩn Thùng Hàng LC Foods:</h3>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Loại Sản Phẩm & Trọng Lượng Thùng:</label>
+              <select id="payload-box-type" onchange="calcPayload()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold">
+                <option value="10">Thùng Há Cảo / Sủi Cảo Đông Lạnh (10 kg/thùng)</option>
+                <option value="5">Thùng Xúc Xích Tươi / Mát (5 kg/thùng)</option>
+                <option value="12">Thùng Xúc Xích Tiệt Trùng Vườn Cây (12 kg/thùng)</option>
+                <option value="15">Thùng Đồ Đóng Hộp La Cusina (15 kg/thùng)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Chọn Trọng Tải Xe Vận Chuyển:</label>
+              <select id="payload-truck-capacity" onchange="calcPayload()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold">
+                <option value="1500" data-pallets="2">Xe Lạnh 1.5 Tấn (Tối đa 2 Pallets / 1,500 kg)</option>
+                <option value="3500" data-pallets="4" selected>Xe Lạnh 3.5 Tấn (Tối đa 4 Pallets / 3,500 kg)</option>
+                <option value="5000" data-pallets="6">Xe Lạnh 5.0 Tấn (Tối đa 6 Pallets / 5,000 kg)</option>
+                <option value="8000" data-pallets="10">Xe Lạnh 8.0 Tấn (Tối đa 10 Pallets / 8,000 kg)</option>
+                <option value="15000" data-pallets="18">Xe Lạnh 15 Tấn (Tối đa 18 Pallets / 15,000 kg)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Số Thùng Dự Kiến Xuất Kho:</label>
+              <input type="number" id="payload-box-count" value="280" oninput="calcPayload()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold text-sm" />
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 flex flex-col justify-between shadow-md">
+            <div>
+              <h3 class="font-bold text-emerald-400 text-sm border-b border-slate-800 pb-2">Thông Số Xếp Hàng Lên Xe:</h3>
+              <div class="py-3 space-y-2 text-xs">
+                <div class="flex justify-between"><span>Tổng trọng lượng hàng:</span><strong class="text-white" id="payload-out-weight">2,800 kg</strong></div>
+                <div class="flex justify-between"><span>Quy đổi số Pallet (1.2m x 1m):</span><strong class="text-amber-400" id="payload-out-pallets">3.2 Pallets</strong></div>
+                <div class="flex justify-between border-t border-slate-800 pt-2 text-sm">
+                  <span>Tỷ lệ lấp đầy thùng xe (Fill Rate):</span>
+                  <strong class="text-emerald-400" id="payload-out-fill">80.0% (Tốt)</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300" id="payload-out-warning">
+              ✓ Tải trọng nằm trong ngưỡng an toàn cho phép của xe 3.5 Tấn.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-TOOL 4: SUPERMARKET TIME-SLOT SCHEDULER -->
+      <div id="calc-subtool-4" class="hidden bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-xs">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-xl font-display font-bold text-slate-900">⏱️ 4. Lập Lịch Khung Giờ Hẹn (Time-Slot) Giao Kho DC Siêu Thị</h2>
+          <p class="text-xs text-slate-500">Tính toán mốc thời gian xuất phát, thời gian lưu thông và dự phòng kẹt xe đảm bảo tỷ lệ OTIF &gt; 98.5%.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <h3 class="font-bold text-sm text-slate-900">Thông Số Hành Trình Giao Hàng:</h3>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Khung Giờ Hẹn DC Siêu Thị (Time-Slot):</label>
+              <input type="time" id="ts-slot-time" value="09:00" onchange="calcTimeSlot()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+            </div>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Thời Gian Chạy Xe Dự Kiến (Phút):</label>
+              <input type="number" id="ts-drive-mins" value="45" oninput="calcTimeSlot()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+            </div>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Thời Gian Chờ Cổng & Kiểm KCS (Phút):</label>
+              <input type="number" id="ts-wait-mins" value="40" oninput="calcTimeSlot()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 flex flex-col justify-between shadow-md">
+            <div>
+              <h3 class="font-bold text-amber-400 text-sm border-b border-slate-800 pb-2">Khuyến Nghị Lịch Xuất Xe LC Foods:</h3>
+              <div class="py-3 space-y-2 text-xs">
+                <div class="flex justify-between"><span>Giờ xuất phát tại Nhà máy:</span><strong class="text-rose-400 text-sm" id="ts-out-departure">07:15 AM</strong></div>
+                <div class="flex justify-between"><span>Dự kiến tới cổng DC Siêu thị:</span><strong class="text-white" id="ts-out-arrival">08:00 AM</strong></div>
+                <div class="flex justify-between"><span>Thời gian dự phòng rủi ro:</span><strong class="text-emerald-400">20 Phút</strong></div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-emerald-300 font-bold">
+              ⏱️ Xe xuất phát lúc 07:15 AM sẽ đảm bảo chốt giao hàng đúng hẹn 09:00 AM không bị phạt trễ giờ!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB-TOOL 5: DELIVERY RISK & PENALTY EXPOSURE CALCULATOR -->
+      <div id="calc-subtool-5" class="hidden bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 text-xs">
+        <div class="border-b border-slate-100 pb-4">
+          <h2 class="text-xl font-display font-bold text-slate-900">💸 5. Tính Chi Phí Rủi Ro Trả Hàng & Phạt Trễ Giờ Siêu Thị</h2>
+          <p class="text-xs text-slate-500">Ước tính tổn thất tài chính khi chuyến hàng bị trễ time-slot hoặc bị trả về do sự cố nhiệt độ.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <h3 class="font-bold text-sm text-slate-900">Thông Số Giá Trị Lô Hàng:</h3>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Tổng Giá Trị Lô Hàng LC Foods (VND):</label>
+              <input type="number" id="risk-value" value="250000000" oninput="calcRisk()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+            </div>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Mức Phạt Trễ Hẹn Siêu Thị (% Giá Trị Đơn):</label>
+              <input type="number" id="risk-penalty-pct" value="5" oninput="calcRisk()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+            </div>
+            <div>
+              <label class="block text-slate-700 font-bold mb-1">Phí Lưu Đêm & Vận Chuyển Khứ Hồi Về Kho (VND):</label>
+              <input type="number" id="risk-return-cost" value="2000000" oninput="calcRisk()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-slate-900 font-bold" />
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-900 text-white space-y-4 flex flex-col justify-between shadow-md">
+            <div>
+              <h3 class="font-bold text-rose-400 text-sm border-b border-slate-800 pb-2">Ước Tính Tổn Thất Rủi Ro:</h3>
+              <div class="py-3 space-y-2 text-xs">
+                <div class="flex justify-between"><span>Tiền phạt trễ siêu thị:</span><strong class="text-rose-400" id="risk-out-penalty">12,500,000 VND</strong></div>
+                <div class="flex justify-between"><span>Chi phí phát sinh kho bãi & xe quay đầu:</span><strong class="text-white" id="risk-out-return">2,000,000 VND</strong></div>
+                <div class="flex justify-between border-t border-slate-800 pt-2 text-sm">
+                  <span>Tổng Rủi Ro Hỏng Chuyến Hàng:</span>
+                  <strong class="text-rose-500 text-lg" id="risk-out-total">14,500,000 VND</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-rose-300 font-bold">
+              ⚠️ Khuyên dùng các nhà xe có điểm OTIF trên 98% (ABA Cooltrans, Swire Cold, Konoike Vina) để triệt tiêu 100% chi phí rủi ro này!
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- SECTION 3: SUPERMARKET DC SPECS -->
@@ -474,6 +680,20 @@
       document.getElementById('tab-btn-' + tabId).className = 'px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-md transition';
     }
 
+    function switchCalcSubtab(toolId) {
+      [1, 2, 3, 4, 5].forEach(id => {
+        document.getElementById('calc-subtool-' + id).classList.add('hidden');
+        document.getElementById('calc-subtab-btn-' + id).className = 'px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition';
+      });
+      document.getElementById('calc-subtool-' + toolId).classList.remove('hidden');
+      document.getElementById('calc-subtab-btn-' + toolId).className = 'px-4 py-2.5 rounded-xl bg-rose-600 text-white shadow-sm transition';
+
+      if (toolId === 2) calcFtlVsLtl();
+      if (toolId === 3) calcPayload();
+      if (toolId === 4) calcTimeSlot();
+      if (toolId === 5) calcRisk();
+    }
+
     function renderProductFilters() {
       const container = document.getElementById('product-group-filters');
       container.innerHTML = LC_FOODS_PRODUCT_GROUPS.map(g => `
@@ -663,6 +883,7 @@
       alert('Đã thêm nhà vận chuyển "' + name + '" vào danh sách LC FOODS thành công!');
     }
 
+    // Sub-tool 1: Freight Estimator
     function setCalcMode(mode) {
       calcMode = mode;
       if (mode === 'FTL') {
@@ -701,6 +922,94 @@
       document.getElementById('out-cold').innerText = '+' + coldSurcharge.toLocaleString('vi-VN') + ' VND';
       document.getElementById('out-slot').innerText = '+' + slotFee.toLocaleString('vi-VN') + ' VND';
       document.getElementById('out-total').innerText = total.toLocaleString('vi-VN') + ' VND';
+    }
+
+    // Sub-tool 2: FTL vs LTL Calculator
+    function calcFtlVsLtl() {
+      const weight = Number(document.getElementById('ftl-ltl-weight').value) || 2800;
+      const dist = Number(document.getElementById('ftl-ltl-dist').value) || 175;
+      const rate = Number(document.getElementById('ftl-ltl-rate').value) || 3800;
+
+      const ltlCost = weight * rate;
+      const ftlBase = dist <= 40 ? 1800000 : 1800000 + (dist - 40) * 22000;
+      const ftlCost = ftlBase * 1.15; // with cold surcharge
+
+      const breakevenWeight = Math.round(ftlCost / rate);
+
+      document.getElementById('ftl-ltl-out-ltl').innerText = ltlCost.toLocaleString('vi-VN') + ' VND';
+      document.getElementById('ftl-ltl-out-ftl').innerText = Math.round(ftlCost).toLocaleString('vi-VN') + ' VND';
+      document.getElementById('ftl-ltl-out-breakeven').innerText = breakevenWeight.toLocaleString('vi-VN') + ' kg';
+
+      const rec = document.getElementById('ftl-ltl-recommendation');
+      if (weight >= breakevenWeight) {
+        rec.innerText = '💡 Khuyên dùng: Lô hàng ' + weight + 'kg vượt ngưỡng hòa vốn (' + breakevenWeight + 'kg) -> NÊN THUÊ NGUYÊN XE (FTL) để tiết kiệm ' + Math.round(ltlCost - ftlCost).toLocaleString('vi-VN') + ' VND và đảm bảo nhiệt độ an toàn 100%!';
+      } else {
+        rec.innerText = '💡 Khuyên dùng: Lô hàng ' + weight + 'kg nhỏ hơn ngưỡng hòa vốn (' + breakevenWeight + 'kg) -> NÊN GỬI GHẾP (LTL) để tiết kiệm ' + Math.round(ftlCost - ltlCost).toLocaleString('vi-VN') + ' VND!';
+      }
+    }
+
+    // Sub-tool 3: Truck Payload Calculator
+    function calcPayload() {
+      const boxWeight = Number(document.getElementById('payload-box-type').value) || 10;
+      const boxCount = Number(document.getElementById('payload-box-count').value) || 280;
+      const selTruck = document.getElementById('payload-truck-capacity');
+      const maxKg = Number(selTruck.value) || 3500;
+      const maxPallets = Number(selTruck.options[selTruck.selectedIndex].dataset.pallets) || 4;
+
+      const totalWeight = boxWeight * boxCount;
+      const fillPct = ((totalWeight / maxKg) * 100).toFixed(1);
+      const estPallets = (totalWeight / 900).toFixed(1);
+
+      document.getElementById('payload-out-weight').innerText = totalWeight.toLocaleString('vi-VN') + ' kg';
+      document.getElementById('payload-out-pallets').innerText = estPallets + ' Pallets (Tối đa ' + maxPallets + ' Pallets)';
+      document.getElementById('payload-out-fill').innerText = fillPct + '% (' + (fillPct <= 100 ? 'Trong giới hạn' : 'VƯỢT QUÁ TẢI') + ')';
+
+      const warn = document.getElementById('payload-out-warning');
+      if (totalWeight > maxKg) {
+        warn.className = 'p-4 rounded-xl bg-rose-950 border border-rose-500 text-xs text-rose-300 font-bold';
+        warn.innerText = '⚠️ CẢNH BÁO QUÁ TẢI: Lô hàng quá tải ' + (totalWeight - maxKg).toLocaleString('vi-VN') + ' kg! Hãy nâng trọng tải xe hoặc tách lô hàng!';
+      } else {
+        warn.className = 'p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-emerald-300 font-bold';
+        warn.innerText = '✓ Tải trọng nằm trong ngưỡng an toàn cho phép của xe ' + (maxKg / 1000) + ' Tấn.';
+      }
+    }
+
+    // Sub-tool 4: Time-Slot Scheduler
+    function calcTimeSlot() {
+      const slotTimeStr = document.getElementById('ts-slot-time').value || '09:00';
+      const driveMins = Number(document.getElementById('ts-drive-mins').value) || 45;
+      const waitMins = Number(document.getElementById('ts-wait-mins').value) || 40;
+
+      const [h, m] = slotTimeStr.split(':').map(Number);
+      const totalLead = driveMins + waitMins + 20; // 20 min buffer
+
+      let depMins = h * 60 + m - totalLead;
+      if (depMins < 0) depMins += 24 * 60;
+
+      const depH = String(Math.floor(depMins / 60)).padStart(2, '0');
+      const depM = String(depMins % 60).padStart(2, '0');
+
+      let arrMins = h * 60 + m - waitMins;
+      if (arrMins < 0) arrMins += 24 * 60;
+      const arrH = String(Math.floor(arrMins / 60)).padStart(2, '0');
+      const arrM = String(arrMins % 60).padStart(2, '0');
+
+      document.getElementById('ts-out-departure').innerText = depH + ':' + depM + ' AM';
+      document.getElementById('ts-out-arrival').innerText = arrH + ':' + arrM + ' AM';
+    }
+
+    // Sub-tool 5: Delivery Risk Calculator
+    function calcRisk() {
+      const cargoVal = Number(document.getElementById('risk-value').value) || 250000000;
+      const penaltyPct = Number(document.getElementById('risk-penalty-pct').value) || 5;
+      const returnCost = Number(document.getElementById('risk-return-cost').value) || 2000000;
+
+      const penaltyVal = Math.round(cargoVal * (penaltyPct / 100));
+      const totalRisk = penaltyVal + returnCost;
+
+      document.getElementById('risk-out-penalty').innerText = penaltyVal.toLocaleString('vi-VN') + ' VND';
+      document.getElementById('risk-out-return').innerText = returnCost.toLocaleString('vi-VN') + ' VND';
+      document.getElementById('risk-out-total').innerText = totalRisk.toLocaleString('vi-VN') + ' VND';
     }
 
     function renderDcSpecs() {
